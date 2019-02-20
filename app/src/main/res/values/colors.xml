@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="blue">#2196F3</color>
-    <color name="red">#F44336</color>
-    <color name="yellow">#CDDC39</color>
-    <color name="black">#000000</color>
-    <color name="green">#4CAF50</color>
-    <color name="grey">#575252</color>
-    <color name="violet">#673AB7</color>
+    <color name="background_color_btn">#CDDC39</color>
+    <color name="text_color_bnt">#000000</color>
+    <color name="background_textView1">#2196F3</color>
+    <color name="text_color_textView1">#575252</color>
+    <color name="background_textView2">#F44336</color>
+    <color name="text_color_textView2">#673AB7</color>
+
 </resources>

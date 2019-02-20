@@ -14,8 +14,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
         android:text="@string/button_change"
-        android:background="@color/yellow"
-        android:textColor="@color/black"
+        android:background="@color/background_color_btn"
+        android:textColor="@color/text_color_bnt"
         android:padding="10dp"/>
 
     <TextView
@@ -24,11 +24,12 @@
         android:layout_height="wrap_content"
         android:textSize="32dp"
         android:layout_marginTop="50dp"
-        android:text="@string/textview1"
+        android:text="@string/textView_1"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/blue"
+        android:textColor="@color/background_textView1"
+        android:background="@color/text_color_textView1"
         android:clickable="true"
-        android:background="@color/grey"/>
+        />
 
     <TextView
         android:id="@+id/textView2"
@@ -36,9 +37,10 @@
         android:layout_height="wrap_content"
         android:textSize="40dp"
         android:layout_marginTop="50dp"
-        android:text="@string/textview2"
+        android:text="@string/textView_2"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/red"
+        android:textColor="@color/background_textView2"
+        android:background="@color/text_color_textView2"
         android:clickable="true"
-        android:background="@color/violet"/>
+        />
 </LinearLayout>
