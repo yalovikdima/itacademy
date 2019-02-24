@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.gmail.yalovikdima.itacademy.dz1.Dz1Activity;
+import com.gmail.yalovikdima.itacademy.dz2.Dz2Activity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }
             case R.id.dz2Button:{
+                startActivity(Dz2Activity.getIntent(this));
                 break;
             }
         }
