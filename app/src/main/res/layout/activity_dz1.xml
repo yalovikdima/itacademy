@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".dz1.Dz1Activity"
+    >
+
+    <Button
+        android:id="@+id/button_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        android:text="@string/button_change"
+        android:background="@color/background_color_btn"
+        android:textColor="@color/text_color_bnt"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/textView_1"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/background_textView1"
+        android:background="@color/text_color_textView1"
+        android:clickable="true"
+        />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/textView_2"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/background_textView2"
+        android:background="@color/text_color_textView2"
+        android:clickable="true"
+        />
+</LinearLayout>
