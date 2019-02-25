@@ -4,4 +4,19 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     </style>
 
+    <style name="base_flag">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_margin">20dp</item>
+    </style>
+
+    <style name="vertical_flag" parent="base_flag">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="horizontal_flag" parent="base_flag">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
 </resources>
