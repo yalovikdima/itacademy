@@ -6,4 +6,6 @@
     <string name="dz1">Dz1</string>
     <string name="dz2">Dz2</string>
     <string name="dz3">Dz3</string>
+    <string name="load">Load</string>
+    <string name="link">http://</string>
 </resources>
