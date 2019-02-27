@@ -18,6 +18,10 @@
     <color name="background">#4A5747</color>
     <color name="linkBg">#C39C9595</color>
     <color name="colorHint">#FFFFFF</color>
+    <color name="loginBg">#59A2B0B6</color>
+    <color name="loginHint">#CECECE</color>
+    <color name="loginButton">#6DB3EC</color>
+    <color name="loginCreateAccount">#CA9C5E</color>
 
 
 
