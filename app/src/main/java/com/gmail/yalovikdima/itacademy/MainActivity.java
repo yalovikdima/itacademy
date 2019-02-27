@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.gmail.yalovikdima.itacademy.Cw.LoginActivity;
 import com.gmail.yalovikdima.itacademy.dz1.Dz1Activity;
 import com.gmail.yalovikdima.itacademy.dz2.Dz2Activity;
 import com.gmail.yalovikdima.itacademy.dz3.Dz3Activity;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonDz1;
     private Button buttonDz2;
     private Button buttonDz3;
+    private Button buttonLogin;
 
 
     @Override
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonDz2.setOnClickListener(this);
         buttonDz3 = findViewById(R.id.dz3Button);
         buttonDz3.setOnClickListener(this);
+        buttonLogin = findViewById(R.id.loginPageButton);
+        buttonLogin.setOnClickListener(this);
 
     }
 
@@ -44,6 +48,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             case R.id.dz3Button:{
                 startActivity(Dz3Activity.getIntent(this));
+                break;
+            }
+            case R.id.loginPageButton:{
+                startActivity(LoginActivity.getIntent(this));
+                break;
             }
 
         }
