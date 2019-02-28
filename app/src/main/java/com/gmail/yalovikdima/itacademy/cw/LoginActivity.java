@@ -1,4 +1,4 @@
-package com.gmail.yalovikdima.itacademy.Cw;
+package com.gmail.yalovikdima.itacademy.cw;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.gmail.yalovikdima.itacademy.R;
-import com.gmail.yalovikdima.itacademy.dz1.Dz1Activity;
 
 public class LoginActivity extends AppCompatActivity {
 

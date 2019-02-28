@@ -25,7 +25,7 @@
         <activity android:name=".dz1.Dz1Activity"/>
         <activity android:name=".dz2.Dz2Activity"/>
         <activity android:name=".dz3.Dz3Activity"/>
-        <activity android:name=".Cw.LoginActivity"/>
+        <activity android:name=".cw.LoginActivity"/>
 
     </application>
 

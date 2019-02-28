@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.gmail.yalovikdima.itacademy.Cw.LoginActivity;
+import com.gmail.yalovikdima.itacademy.cw.LoginActivity;
 import com.gmail.yalovikdima.itacademy.dz1.Dz1Activity;
 import com.gmail.yalovikdima.itacademy.dz2.Dz2Activity;
 import com.gmail.yalovikdima.itacademy.dz3.Dz3Activity;
