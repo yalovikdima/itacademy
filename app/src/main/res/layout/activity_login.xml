@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/login_bg"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/login_logo"
+            tools:ignore="ContentDescription" />
+
+        <EditText
+            android:id="@+id/username"
+            style="@style/editText"
+            android:drawableStart="@drawable/ic_login_name"
+            android:hint="@string/username"
+            android:importantForAutofill="no"
+            tools:ignore="TextFields,UnusedAttribute" />
+
+        <EditText
+            android:id="@+id/password"
+            style="@style/editText"
+            android:drawableStart="@drawable/ic_login_password"
+            android:hint="@string/password"
+            android:importantForAutofill="no"
+            tools:ignore="TextFields,UnusedAttribute" />
+
+        <Button
+            style="@style/baseButton"
+            android:layout_marginTop="25dp"
+            android:background="#6DB3EC"
+            android:text="@string/log_in" />
+
+        <TextView
+            android:id="@+id/forgot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:text="@string/forgot_your_username_password"
+            android:textColor="@color/colorHint"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            style="@style/baseButton"
+            android:layout_marginBottom="20dp"
+            android:background="@color/loginCreateAccount"
+            android:text="@string/create_account" />
+    </LinearLayout>
+
+</FrameLayout>

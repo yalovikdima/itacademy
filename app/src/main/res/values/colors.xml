@@ -14,7 +14,14 @@
     <color name="yellow_Columbia">#FCD116</color>
     <color name="blue_Columbia">#003893</color>
     <color name="red_Thailand">#8B121D</color>
-    <color name="red_Denmark">##A71123</color>
+    <color name="red_Denmark">#A71123</color>
+    <color name="background">#4A5747</color>
+    <color name="linkBg">#C39C9595</color>
+    <color name="colorHint">#FFFFFF</color>
+    <color name="loginBg">#59A2B0B6</color>
+    <color name="loginHint">#CECECE</color>
+    <color name="loginButton">#6DB3EC</color>
+    <color name="loginCreateAccount">#CA9C5E</color>
 
 
 

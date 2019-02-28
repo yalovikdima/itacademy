@@ -19,4 +19,29 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
+    <style name="editText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@color/loginBg</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:textColorHint">@color/loginHint</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:fontFamily">@font/monda_regular</item>
+        <item name="android:textColor">@color/loginHint</item>
+
+    </style>
+
+    <style name="baseButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:textColor">@color/colorHint</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+
 </resources>
