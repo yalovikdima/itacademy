@@ -18,6 +18,7 @@ public class Dz4Activity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dz4);
+        overridePendingTransition(R.anim.diagonaltranslate, R.anim.alpha);
 
     }
 }
