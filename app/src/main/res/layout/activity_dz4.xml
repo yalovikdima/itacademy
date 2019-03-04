@@ -1,12 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#111111">
+    android:background="@color/clockBg">
+
+    <ImageView
+        android:id="@+id/sova"
+        android:layout_width="200dp"
+        android:layout_height="310dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/clockView"
+        app:layout_constraintVertical_bias="0.103"
+        tools:ignore="MissingConstraints" />
 
     <com.gmail.yalovikdima.itacademy.views.ClockView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center"/>
+        android:id="@+id/clockView"
+        android:layout_width="351dp"
+        android:layout_height="370dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
-</FrameLayout>
+
+</android.support.constraint.ConstraintLayout>
