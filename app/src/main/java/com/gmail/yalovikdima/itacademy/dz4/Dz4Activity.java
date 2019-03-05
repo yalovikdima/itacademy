@@ -24,7 +24,6 @@ public class Dz4Activity extends AppCompatActivity {
         setContentView(R.layout.activity_dz4);
         overridePendingTransition(R.anim.diagonaltranslate, R.anim.alpha);
 
-
         mImageViewFilling = findViewById(R.id.sova);
         mImageViewFilling.setBackgroundResource(R.drawable.animation_list_filling);
         ((AnimationDrawable) mImageViewFilling.getBackground()).start();

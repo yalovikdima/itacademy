@@ -4,82 +4,119 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 public class DiagramView extends View {
 
-    private int[] numbers = {5, 5, 10};
-    private int[] colors  = new int[numbers.length];
+    private int[] numbers = {2, 3, 5, 10, 20, 10, 20, 10, 5, 1};
+    private int[] colors = new int[numbers.length];
     private boolean isInit;
+    private float center_x;
+    private float center_y;
+    private float radius;
+    private float width;
+    private float height;
+    private Rect rect;
+    private Paint paint;
+    private RectF oval;
 
     public DiagramView(Context context) {
         super(context);
-        init();
+
     }
 
     public DiagramView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
+
     }
 
     public DiagramView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public DiagramView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        init();
+
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if(!isInit){
+        if (!isInit) {
             init();
         }
-
-        float radius = 400f;
-        Paint paint = new Paint();
         paint.setStrokeWidth(5);
         paint.setStyle(Paint.Style.FILL);
+        paint.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
         paint.setAntiAlias(true);
 
-        float center_x, center_y;
-        center_x = getWidth() / 2;
-        center_y = getHeight() / 2;
-
-        final RectF oval = new RectF();
         oval.set(center_x - radius, center_y - radius, center_x + radius,
                 center_y + radius);
+
         int startAngle = 0;
         int sum = 0;
         for (int number : numbers) {
             sum += number;
         }
-        for (int i=0; i<numbers.length; i++) {
-            paint.setColor(colors[i]);
+        for (int i = 0; i < numbers.length; i++) {
             int angle = 360 * numbers[i] / sum;
+            float percent = (float) numbers[i] / sum * 100;
+            DecimalFormat decimalFormat = new DecimalFormat("#.##");
+            percent = Float.valueOf(decimalFormat.format(percent));
+            String tmp = String.valueOf(numbers[i]) + "(" + String.valueOf(percent) + "%)";
+            paint.getTextBounds(tmp, 0, tmp.length(), rect);
+            paint.setColor(Color.GRAY);
+            float cosAngleTmp = (float) Math.cos(Math.toRadians(startAngle + (angle >> 1)));
+            float sinAngleTmp = (float) Math.sin(Math.toRadians(startAngle + (angle >> 1)));
+            canvas.drawLine(center_x, center_y,
+                    center_x + cosAngleTmp * (radius + 40),
+                    center_y + sinAngleTmp * (radius + 40), paint);
+            canvas.drawCircle(
+                    center_x + cosAngleTmp * (radius + 40),
+                    center_y + sinAngleTmp * (radius + 40),
+                    10f, paint);
+            paint.setColor(Color.BLACK);
+            canvas.drawText(tmp,
+                    center_x + cosAngleTmp * (radius + 160) - (rect.width() >> 1),
+                    center_y + sinAngleTmp * (radius + 100) + (rect.height() >> 1),
+                    paint);
+            paint.setColor(colors[i]);
             canvas.drawArc(oval, startAngle, angle, true, paint);
             startAngle += angle;
         }
         invalidate();
     }
 
-    private void init(){
+    private void init() {
+        width = getWidth();
+        height = getHeight();
+        center_x = width / 2;
+        center_y = height / 2;
+        radius = 200f;
+        rect = new Rect();
+        paint = new Paint();
+        oval = new RectF();
+        setColorArray();
+        isInit = true;
+    }
+
+    private void setColorArray(){
         Random rnd = new Random();
-        for (int i=0; i<numbers.length; i++){
+        for (int i = 0; i < numbers.length; i++) {
             int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
             colors[i] = color;
         }
-        isInit=true;
     }
 
 }

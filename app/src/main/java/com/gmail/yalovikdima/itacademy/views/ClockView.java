@@ -25,6 +25,8 @@ public class ClockView extends View {
     private boolean isInit;
     private Rect rect;
     private Paint paint;
+    float cX;
+    float cY;
 
 
     public ClockView(Context context) {
@@ -56,6 +58,8 @@ public class ClockView extends View {
         paint = new Paint();
         isInit = true;
         rect = new Rect();
+        cX = width / 2;
+        cY = height / 2;
     }
 
     @Override
@@ -76,15 +80,13 @@ public class ClockView extends View {
     }
 
     //draw serifs
-    private void drawSerif(Canvas canvas,  int number, int strokeWidth, int length, int degrees) {
+    private void drawSerif(Canvas canvas, int number, int strokeWidth, int length, int degrees) {
         paint.setColor(Color.WHITE);
-        float pX = width / 2;
-        float pY = height / 2;
         float bigRadius = radius + padding;
         paint.setStrokeWidth(strokeWidth);
         for (int i = 1; i <= number; i++) {
-            canvas.drawLine(pX, pY - bigRadius + length, pX, pY - bigRadius, paint);
-            canvas.rotate(degrees, pX, pY);
+            canvas.drawLine(cX, cY - bigRadius + length, cX, cY - bigRadius, paint);
+            canvas.rotate(degrees, cX, cY);
         }
     }
 
@@ -93,9 +95,9 @@ public class ClockView extends View {
         paint.setColor(colorHand);
         double angle = Math.PI * loc / 30 - Math.PI / 2;
         int handRadius = (int) (isHour ? radius - handTruncation - hourHandTruncation : radius - handTruncation);
-        canvas.drawLine(width / 2, height / 2,
-                (float) (width / 2 + Math.cos(angle) * handRadius),
-                (float) (height / 2 + Math.sin(angle) * handRadius), paint);
+        canvas.drawLine(cX, cY,
+                (float) (cX+ Math.cos(angle) * handRadius),
+                (float) (cY + Math.sin(angle) * handRadius), paint);
     }
 
     private void drawHands(Canvas canvas) {
@@ -117,8 +119,8 @@ public class ClockView extends View {
             String tmp = String.valueOf(num);
             paint.getTextBounds(tmp, 0, tmp.length(), rect);
             double angle = Math.PI / 6 * (num - 3);
-            float x = (float) (width / 2 + Math.cos(angle) * radius - rect.width() / 2);
-            float y = (float) (height / 2 + Math.sin(angle) * radius + rect.height() / 2);
+            float x = (float) (cX + Math.cos(angle) * radius - rect.width() / 2);
+            float y = (float) (cY + Math.sin(angle) * radius + rect.height() / 2);
             canvas.drawText(tmp, x, y, paint);
         }
 
@@ -127,7 +129,7 @@ public class ClockView extends View {
     private void drawCenter(Canvas canvas) {
         paint.setColor(Color.BLACK);
         paint.setStyle(Paint.Style.FILL);
-        canvas.drawCircle(width / 2, height / 2, 18, paint);
+        canvas.drawCircle(cX, cY, 18, paint);
     }
 
     private void drawCircle(Canvas canvas) {
@@ -136,6 +138,6 @@ public class ClockView extends View {
         paint.setStrokeWidth(20);
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);
-        canvas.drawCircle(width / 2, height / 2, radius + padding - 10, paint);
+        canvas.drawCircle(cX, cY, radius + padding - 10, paint);
     }
 }
