@@ -12,7 +12,7 @@ import com.gmail.yalovikdima.itacademy.R;
 
 public class Dz4Activity extends AppCompatActivity {
 
-    ImageView mImageViewFilling;
+    private ImageView mImageViewFilling;
 
     public static Intent getIntent(Context context) {
         return new Intent(context, Dz4Activity.class);

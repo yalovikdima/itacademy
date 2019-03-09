@@ -29,17 +29,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void init() {
-        buttonDz1 = findViewById(R.id.dz1Button);
-        buttonDz1.setOnClickListener(this);
-        buttonDz2 = findViewById(R.id.dz2Button);
-        buttonDz2.setOnClickListener(this);
-        buttonDz3 = findViewById(R.id.dz3Button);
-        buttonDz3.setOnClickListener(this);
-        buttonDz4 = findViewById(R.id.dz4Button);
-        buttonDz4.setOnClickListener(this);
-        buttonLogin = findViewById(R.id.loginPageButton);
-        buttonLogin.setOnClickListener(this);
-
+        findViewById(R.id.dz1Button).setOnClickListener(this);
+        findViewById(R.id.dz2Button).setOnClickListener(this);
+        findViewById(R.id.dz3Button).setOnClickListener(this);
+        findViewById(R.id.dz4Button).setOnClickListener(this);
+        findViewById(R.id.loginPageButton).setOnClickListener(this);
     }
 
     @Override

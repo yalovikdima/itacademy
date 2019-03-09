@@ -15,58 +15,64 @@ import java.util.Calendar;
 
 public class ClockView extends View {
 
-    private float height;
-    private float width;
     private float padding;
     private int fontSize;
     private float handTruncation;
     private float hourHandTruncation;
     private float radius;
-    private boolean isInit;
     private Rect rect;
     private Paint paint;
-    float cX;
-    float cY;
+    private float cX;
+    private float cY;
+    private float bigRadius;
+    private double angle;
+    private int handRadius;
+    private float hour;
+    private  Calendar c;
 
 
     public ClockView(Context context) {
         super(context);
+        initClock();
     }
 
     public ClockView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        initClock();
     }
 
     public ClockView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initClock();
     }
 
     @SuppressLint("NewApi")
     public ClockView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        initClock();
     }
 
-    private void initClock() {
-        height = getHeight();
-        width = getWidth();
-        padding = 130;
-        fontSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 30, getResources().getDisplayMetrics());
-        float min = Math.min(height, width);
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        float min = Math.min(h, w);
         radius = min / 2 - padding;
         handTruncation = min / 20;
         hourHandTruncation = min / 7;
+        cX = w / 2;
+        cY = h / 2;
+        bigRadius = radius + padding;
+    }
+
+    private void initClock() {
+        padding = 130;
+        fontSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 30, getResources().getDisplayMetrics());
         paint = new Paint();
-        isInit = true;
         rect = new Rect();
-        cX = width / 2;
-        cY = height / 2;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (!isInit) {
-            initClock();
-        }
         drawCircle(canvas);
         drawCenter(canvas);
         drawNumeral(canvas);
@@ -82,7 +88,6 @@ public class ClockView extends View {
     //draw serifs
     private void drawSerif(Canvas canvas, int number, int strokeWidth, int length, int degrees) {
         paint.setColor(Color.WHITE);
-        float bigRadius = radius + padding;
         paint.setStrokeWidth(strokeWidth);
         for (int i = 1; i <= number; i++) {
             canvas.drawLine(cX, cY - bigRadius + length, cX, cY - bigRadius, paint);
@@ -93,16 +98,16 @@ public class ClockView extends View {
     private void drawHand(Canvas canvas, double loc, boolean isHour, float widthHand, int colorHand) {
         paint.setStrokeWidth(widthHand);
         paint.setColor(colorHand);
-        double angle = Math.PI * loc / 30 - Math.PI / 2;
-        int handRadius = (int) (isHour ? radius - handTruncation - hourHandTruncation : radius - handTruncation);
+        angle = Math.PI * loc / 30 - Math.PI / 2;
+        handRadius = (int) (isHour ? radius - handTruncation - hourHandTruncation : radius - handTruncation);
         canvas.drawLine(cX, cY,
                 (float) (cX+ Math.cos(angle) * handRadius),
                 (float) (cY + Math.sin(angle) * handRadius), paint);
     }
 
-    private void drawHands(Canvas canvas) {
-        Calendar c = Calendar.getInstance();
-        float hour = c.get(Calendar.HOUR_OF_DAY);
+        private void drawHands(Canvas canvas) {
+        c = Calendar.getInstance();
+        hour = c.get(Calendar.HOUR_OF_DAY);
         hour = hour > 12 ? hour - 12 : hour;
         drawHand(canvas, (hour + (double) c.get(Calendar.MINUTE) / 60) * 5f
                 , true, 25, Color.BLACK);
@@ -118,17 +123,17 @@ public class ClockView extends View {
         for (int num = 1; num <= 12; num++) {
             String tmp = String.valueOf(num);
             paint.getTextBounds(tmp, 0, tmp.length(), rect);
-            double angle = Math.PI / 6 * (num - 3);
-            float x = (float) (cX + Math.cos(angle) * radius - rect.width() / 2);
-            float y = (float) (cY + Math.sin(angle) * radius + rect.height() / 2);
-            canvas.drawText(tmp, x, y, paint);
+            canvas.drawText(tmp,
+                    (float) (cX + Math.cos(Math.PI / 6 * (num - 3)) * radius - rect.width() / 2),
+                    (float) (cY + Math.sin(Math.PI / 6 * (num - 3)) * radius + rect.height() / 2),
+                    paint);
         }
-
     }
 
     private void drawCenter(Canvas canvas) {
         paint.setColor(Color.BLACK);
         paint.setStyle(Paint.Style.FILL);
+
         canvas.drawCircle(cX, cY, 18, paint);
     }
 
