@@ -29,6 +29,9 @@
         <activity android:name=".dz5.Dz5Activity"/>
         <activity android:name=".cw.LoginActivity"/>
 
+        <service android:name=".services.WifiService"/>
+        <receiver android:name=".util.WifiBroadcastReceiver"/>
+
     </application>
 
     </manifest>
