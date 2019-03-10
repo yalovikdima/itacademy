@@ -22,6 +22,7 @@
     <color name="loginHint">#CECECE</color>
     <color name="loginButton">#6DB3EC</color>
     <color name="loginCreateAccount">#CA9C5E</color>
+    <color name="clockBg">#323C1B</color>
 
 
 
