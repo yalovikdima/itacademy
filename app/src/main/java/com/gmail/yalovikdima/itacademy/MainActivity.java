@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 
 import com.gmail.yalovikdima.itacademy.cw.LoginActivity;
 import com.gmail.yalovikdima.itacademy.dz1.Dz1Activity;
@@ -13,12 +12,6 @@ import com.gmail.yalovikdima.itacademy.dz3.Dz3Activity;
 import com.gmail.yalovikdima.itacademy.dz4.Dz4Activity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private Button buttonDz1;
-    private Button buttonDz2;
-    private Button buttonDz3;
-    private Button buttonDz4;
-    private Button buttonLogin;
 
 
     @Override
