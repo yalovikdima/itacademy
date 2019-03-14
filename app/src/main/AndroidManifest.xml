@@ -30,6 +30,7 @@
         <activity android:name=".dz3.Dz3Activity"/>
         <activity android:name=".dz4.Dz4Activity"/>
         <activity android:name=".dz5.Dz5Activity"/>
+        <activity android:name=".dz6.Dz6Activity"/>
         <activity android:name=".cw.LoginActivity"/>
 
         <service android:name=".dz5.WifiService"/>
