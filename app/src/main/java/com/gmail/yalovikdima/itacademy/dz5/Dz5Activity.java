@@ -23,7 +23,7 @@ import static com.gmail.yalovikdima.itacademy.dz5.WifiService.STATE;
 public class Dz5Activity extends Activity {
 
     private Switch switchWifi;
-    private WifiService wifiService = new WifiService();
+    private WifiService wifiService;
     private ServiceConnection serviceConnection;
 
     public static Intent getIntent(Context context) {
