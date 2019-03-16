@@ -79,11 +79,13 @@ public class DownloadXml extends AsyncTask<String, Void, ArrayList<Offer>> {
                             if ("offer".equalsIgnoreCase(tagName)) {
                                 offers.add(currentOffer);
                                 inEntry = false;
+                            } else if ("id".equalsIgnoreCase(tagName)) {
+                                currentOffer.setId(textValue);
                             } else if ("name".equalsIgnoreCase(tagName)) {
                                 currentOffer.setName(textValue);
                             } else if ("price".equalsIgnoreCase(tagName)) {
                                 currentOffer.setPrice(textValue);
-                            }else  if("picture".equalsIgnoreCase(tagName)){
+                            } else if ("picture".equalsIgnoreCase(tagName)) {
                                 currentOffer.setPicture(textValue);
                             }
                         }

@@ -16,4 +16,6 @@
     <string name="dz4">Dz4</string>
     <string name="dz5">Dz5</string>
     <string name="dz6">DZ6</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
 </resources>

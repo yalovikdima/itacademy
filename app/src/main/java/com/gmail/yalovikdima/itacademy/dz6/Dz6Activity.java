@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -19,7 +22,7 @@ public class Dz6Activity extends Activity implements AsyncResponce {
     private ArrayList<Offer> offers;
     private MyListAdapter adapter = new MyListAdapter();
     private DownloadXml downloadXml = new DownloadXml();
-    private RecyclerView recyclerView ;
+    private RecyclerView recyclerView;
 
     public static Intent getIntent(Context context) {
         return new Intent(context, Dz6Activity.class);
@@ -44,18 +47,39 @@ public class Dz6Activity extends Activity implements AsyncResponce {
                 Toast.makeText(Dz6Activity.this, "ADD", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     @Override
-    public void processFinish(ArrayList<Offer> offers) {
+    public void processFinish(final ArrayList<Offer> offers) {
         this.offers = offers;
         adapter.setList(downloadXml.getOffers());
 
         adapter.setListener(new MyListAdapter.OnItemClickListener() {
             @Override
-            public void onClick(Offer item, int position) {
-                Toast.makeText(Dz6Activity.this, item.getName(), Toast.LENGTH_SHORT).show();
+            public void onClick(final Offer offer, int position) {
+
+                //creating a popup menu
+                PopupMenu popup = new PopupMenu(Dz6Activity.this, recyclerView.getChildAt(position));
+                //inflating menu from xml resource
+                popup.inflate(R.menu.menu);
+                //adding click listener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.update:
+                                Toast.makeText(Dz6Activity.this, "Update", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.delete:
+                                Toast.makeText(Dz6Activity.this, "Delete", Toast.LENGTH_SHORT).show();
+                                offers.remove(offer);
+                                adapter.setList(offers );
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                popup.show();
             }
         });
         recyclerView.setAdapter(adapter);

@@ -46,9 +46,8 @@ public class MyListAdapter  extends RecyclerView.Adapter<MyListViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyListViewHolder myListViewHolder, int i) {
-
-
         myListViewHolder.bind(list.get(i), i);
+
     }
 
     @Override
