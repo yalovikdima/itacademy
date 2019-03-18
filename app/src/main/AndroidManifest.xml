@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.gmail.yalovikdima.itacademy">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -26,7 +29,10 @@
         <activity android:name=".dz2.Dz2Activity"/>
         <activity android:name=".dz3.Dz3Activity"/>
         <activity android:name=".dz4.Dz4Activity"/>
+        <activity android:name=".dz5.Dz5Activity"/>
         <activity android:name=".cw.LoginActivity"/>
+
+        <service android:name=".dz5.WifiService"/>
 
     </application>
 
