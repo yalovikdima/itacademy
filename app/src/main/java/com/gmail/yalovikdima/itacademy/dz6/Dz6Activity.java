@@ -19,9 +19,10 @@ import java.util.ArrayList;
 public class Dz6Activity extends Activity implements AsyncResponce, View.OnClickListener {
 
     OffersSingleton offersSingleton;
-    private MyListAdapter adapter ;
-    private DownloadXml downloadXml ;
+    private MyListAdapter adapter;
+    private DownloadXml downloadXml;
     private RecyclerView recyclerView;
+    private Intent intent;
 
     public static Intent getIntent(Context context) {
         return new Intent(context, Dz6Activity.class);
@@ -33,7 +34,7 @@ public class Dz6Activity extends Activity implements AsyncResponce, View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dz6);
 
-        offersSingleton =OffersSingleton.getInstance();
+        offersSingleton = OffersSingleton.getInstance();
         adapter = new MyListAdapter();
         downloadXml = new DownloadXml();
 
@@ -45,50 +46,42 @@ public class Dz6Activity extends Activity implements AsyncResponce, View.OnClick
         downloadXml.execute();
 
         findViewById(R.id.fab).setOnClickListener(this);
+        intent = new Intent(this, ItemActivity.class);
 
     }
 
 
-
     @Override
     public void processFinish(final ArrayList<Offer> offers) {
+        updateActivity();
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        startActivity(CreateItemActivity.getIntent(this));
+        updateActivity();
+    }
+
+    private void updateActivity() {
         adapter.setList(offersSingleton.getOffers());
 
         adapter.setListener(new MyListAdapter.OnItemClickListener() {
             @Override
             public void onClick(final Offer offer, int position) {
 
-                //creating a popup menu
-                PopupMenu popup = new PopupMenu(Dz6Activity.this, recyclerView.getChildAt(position));
-                //inflating menu from xml resource
-                popup.inflate(R.menu.menu);
-                //adding click listener
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.update:
-                                Toast.makeText(Dz6Activity.this, "Update", Toast.LENGTH_SHORT).show();
-                                break;
-                            case R.id.delete:
-                                Toast.makeText(Dz6Activity.this, "Delete", Toast.LENGTH_SHORT).show();
-                                offers.remove(offer);
-                                adapter.setList(offers );
-                                break;
-                        }
-                        return false;
-                    }
-                });
-                popup.show();
+                intent.putExtra("POS", position);
+                startActivity(intent);
+
             }
         });
         recyclerView.setAdapter(adapter);
     }
 
     @Override
-    public void onClick(View v) {
-        startActivity(CreateItemActivity.getIntent(this));
+    protected void onResume() {
+        super.onResume();
+        updateActivity();
     }
 }
 

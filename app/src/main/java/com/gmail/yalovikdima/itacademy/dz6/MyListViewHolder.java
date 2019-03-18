@@ -10,10 +10,11 @@ import android.widget.TextView;
 
 import com.gmail.yalovikdima.itacademy.R;
 
-public class MyListViewHolder extends RecyclerView.ViewHolder {
+public class MyListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private ImageView imageView;
     private TextView textView;
+    ItemClickListener itemClickListener;
 
     public MyListViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -35,5 +36,15 @@ public class MyListViewHolder extends RecyclerView.ViewHolder {
         } else {
             textView.setText("");
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        this.itemClickListener.onItemClick(v,getLayoutPosition());
+    }
+
+    public void setItemClickListener(ItemClickListener ic)
+    {
+        this.itemClickListener=ic;
     }
 }

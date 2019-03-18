@@ -14,7 +14,7 @@ public class CreateItemActivity extends Activity implements View.OnClickListener
 
     private EditText id;
     private EditText name;
-    private OffersSingleton singleton;
+    private OffersSingleton singleton = OffersSingleton.getInstance();
 
     public static Intent getIntent(Context context) {
         return new Intent( context, CreateItemActivity.class);
@@ -35,6 +35,6 @@ public class CreateItemActivity extends Activity implements View.OnClickListener
     public void onClick(View v) {
         Offer offer =new Offer(id.getText().toString(), name.getText().toString());
         singleton.addOffer(offer);
-
+        finish();
     }
 }

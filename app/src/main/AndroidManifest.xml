@@ -33,7 +33,7 @@
         <activity android:name=".dz6.Dz6Activity"/>
         <activity android:name=".cw.LoginActivity"/>
         <activity android:name=".dz6.CreateItemActivity"/>
-
+        <activity android:name=".dz6.ItemActivity"/>
         <service android:name=".dz5.WifiService"/>
 
     </application>
