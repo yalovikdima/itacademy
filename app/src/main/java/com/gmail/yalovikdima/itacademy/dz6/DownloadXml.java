@@ -13,25 +13,18 @@ import java.util.ArrayList;
 public class DownloadXml extends AsyncTask<String, Void, ArrayList<Offer>> {
 
     public AsyncResponce delegate = null;
+    private OffersSingleton singleton = OffersSingleton.getInstance();
 
-    private ArrayList<Offer> offers;
     private final String URL = "https://pochemuchka.by/market.xml";
-
-    public ArrayList<Offer> getOffers() {
-        return offers;
-    }
 
     @Override
     protected ArrayList<Offer> doInBackground(String... strings) {
         try {
-            offers = new ArrayList<>();
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
             factory.setNamespaceAware(true);
             XmlPullParser xpp = factory.newPullParser();
             xpp.setInput(getInputStream(new URL(URL)), "UTF_8");
-
             parse(xpp);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -41,7 +34,7 @@ public class DownloadXml extends AsyncTask<String, Void, ArrayList<Offer>> {
     @Override
     protected void onPostExecute(ArrayList<Offer> aVoid) {
         super.onPostExecute(aVoid);
-        delegate.processFinish(getOffers());
+        delegate.processFinish(singleton.getOffers());
     }
 
     public InputStream getInputStream(URL url) {
@@ -77,7 +70,7 @@ public class DownloadXml extends AsyncTask<String, Void, ArrayList<Offer>> {
                     case XmlPullParser.END_TAG:
                         if (inEntry) {
                             if ("offer".equalsIgnoreCase(tagName)) {
-                                offers.add(currentOffer);
+                                singleton.addOffer(currentOffer);
                                 inEntry = false;
                             } else if ("id".equalsIgnoreCase(tagName)) {
                                 currentOffer.setId(textValue);

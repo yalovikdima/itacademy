@@ -16,6 +16,11 @@ public class Offer {
         this.id = id;
     }
 
+    public Offer(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Offer(String id, String price, String currencyId, String categiryId, String picture, Boolean delivery, String name, String vendor, String description) {
         this.id = id;
         this.price = price;

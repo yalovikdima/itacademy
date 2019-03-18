@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
-import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -17,11 +16,11 @@ import com.gmail.yalovikdima.itacademy.R;
 
 import java.util.ArrayList;
 
-public class Dz6Activity extends Activity implements AsyncResponce {
+public class Dz6Activity extends Activity implements AsyncResponce, View.OnClickListener {
 
-    private ArrayList<Offer> offers;
-    private MyListAdapter adapter = new MyListAdapter();
-    private DownloadXml downloadXml = new DownloadXml();
+    OffersSingleton offersSingleton;
+    private MyListAdapter adapter ;
+    private DownloadXml downloadXml ;
     private RecyclerView recyclerView;
 
     public static Intent getIntent(Context context) {
@@ -34,6 +33,10 @@ public class Dz6Activity extends Activity implements AsyncResponce {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dz6);
 
+        offersSingleton =OffersSingleton.getInstance();
+        adapter = new MyListAdapter();
+        downloadXml = new DownloadXml();
+
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setHasFixedSize(true);
@@ -41,18 +44,16 @@ public class Dz6Activity extends Activity implements AsyncResponce {
         downloadXml.delegate = this;
         downloadXml.execute();
 
-        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(Dz6Activity.this, "ADD", Toast.LENGTH_SHORT).show();
-            }
-        });
+        findViewById(R.id.fab).setOnClickListener(this);
+
     }
+
+
 
     @Override
     public void processFinish(final ArrayList<Offer> offers) {
-        this.offers = offers;
-        adapter.setList(downloadXml.getOffers());
+
+        adapter.setList(offersSingleton.getOffers());
 
         adapter.setListener(new MyListAdapter.OnItemClickListener() {
             @Override
@@ -83,6 +84,11 @@ public class Dz6Activity extends Activity implements AsyncResponce {
             }
         });
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onClick(View v) {
+        startActivity(CreateItemActivity.getIntent(this));
     }
 }
 
