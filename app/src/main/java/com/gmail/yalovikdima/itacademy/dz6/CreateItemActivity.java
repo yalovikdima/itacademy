@@ -7,14 +7,19 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.gmail.yalovikdima.itacademy.R;
 
+import java.util.Random;
+
 public class CreateItemActivity extends Activity implements View.OnClickListener {
 
-    private EditText id;
     private EditText name;
     private OffersSingleton singleton = OffersSingleton.getInstance();
+    final Random random = new Random();
+    private final String Url = "https://picsum.photos/300/300/?random";
+    private ImageView avatar;
 
     public static Intent getIntent(Context context) {
         return new Intent( context, CreateItemActivity.class);
@@ -25,15 +30,17 @@ public class CreateItemActivity extends Activity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_item);
 
-        id = findViewById(R.id.idEditText);
         name = findViewById(R.id.nameEditText);
-
         findViewById(R.id.addButton).setOnClickListener(this);
+        avatar = findViewById(R.id.avatarCreate);
+        ImageLoaderUtill.loadImage(avatar, Url);
+
     }
 
     @Override
     public void onClick(View v) {
-        Offer offer =new Offer(id.getText().toString(), name.getText().toString());
+        Offer offer =new Offer(String.valueOf(random.nextInt()), name.getText().toString());
+        offer.setPicture(Url);
         singleton.addOffer(offer);
         finish();
     }
