@@ -56,7 +56,13 @@ public class MyListAdapter  extends RecyclerView.Adapter<MyListViewHolder> {
         return list.size();
     }
 
+    public void filterList(ArrayList<Offer> filterredList) {
+        list = filterredList;
+        notifyDataSetChanged();
+    }
+
     public interface OnItemClickListener{
         void onClick(Offer item, int position);
     }
+
 }

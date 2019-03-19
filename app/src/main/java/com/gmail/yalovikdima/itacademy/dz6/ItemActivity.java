@@ -27,13 +27,6 @@ public class ItemActivity extends Activity implements View.OnClickListener {
     private OffersSingleton offersSingleton = OffersSingleton.getInstance();
     private Offer offer;
 
-
-
-    public static Intent getIntent(Context context) {
-        return new Intent(context, ItemActivity.class);
-
-    }
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,11 +73,17 @@ public class ItemActivity extends Activity implements View.OnClickListener {
                 nameEdit.setVisibility(View.VISIBLE);
                 nameEdit.setText(nameItem.getText().toString());
                 saveButton.setVisibility(View.VISIBLE);
+                intent.putExtra("RESULT", "UPDATE");
+                setResult(RESULT_OK, intent);
                 break;
             }
             case R.id.deleteButton: {
                 offersSingleton.remove(offer);
                 Toast.makeText(this, offer.getName()+" was deleted", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+
+                intent.putExtra("RESULT", "DELETE");
+                setResult(RESULT_OK, intent);
                 finish();
                 break;
             }

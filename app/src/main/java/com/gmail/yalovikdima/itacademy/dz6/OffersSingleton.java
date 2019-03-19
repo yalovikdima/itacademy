@@ -21,7 +21,7 @@ public class OffersSingleton {
     }
 
     public void addOffer(Offer offer) {
-        offers.add(offer);
+        offers.add(0,offer);
     }
 
     public void remove(Offer offer) {
