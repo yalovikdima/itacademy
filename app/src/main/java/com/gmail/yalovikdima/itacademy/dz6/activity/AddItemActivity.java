@@ -1,4 +1,4 @@
-package com.gmail.yalovikdima.itacademy.dz6;
+package com.gmail.yalovikdima.itacademy.dz6.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,19 +10,22 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.gmail.yalovikdima.itacademy.R;
+import com.gmail.yalovikdima.itacademy.dz6.utils.ImageLoaderUtill;
+import com.gmail.yalovikdima.itacademy.dz6.entity.Offer;
+import com.gmail.yalovikdima.itacademy.dz6.entity.OffersSingleton;
 
 import java.util.Random;
 
-public class CreateItemActivity extends Activity implements View.OnClickListener {
+public class AddItemActivity extends Activity implements View.OnClickListener {
 
     private EditText name;
     private OffersSingleton singleton = OffersSingleton.getInstance();
-    final Random random = new Random();
+    private final Random random = new Random();
     private final String Url = "https://picsum.photos/300/300/?random";
     private ImageView avatar;
 
     public static Intent getIntent(Context context) {
-        return new Intent( context, CreateItemActivity.class);
+        return new Intent( context, AddItemActivity.class);
     }
 
     @Override
@@ -34,7 +37,6 @@ public class CreateItemActivity extends Activity implements View.OnClickListener
         findViewById(R.id.addButton).setOnClickListener(this);
         avatar = findViewById(R.id.avatarCreate);
         ImageLoaderUtill.loadImage(avatar, Url);
-
     }
 
     @Override

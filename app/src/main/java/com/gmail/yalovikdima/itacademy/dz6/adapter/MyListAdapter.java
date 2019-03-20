@@ -1,6 +1,5 @@
-package com.gmail.yalovikdima.itacademy.dz6;
+package com.gmail.yalovikdima.itacademy.dz6.adapter;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gmail.yalovikdima.itacademy.R;
+import com.gmail.yalovikdima.itacademy.dz6.entity.Offer;
 
 import java.util.ArrayList;
 import java.util.List;

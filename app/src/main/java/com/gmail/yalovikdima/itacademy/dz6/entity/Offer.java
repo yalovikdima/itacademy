@@ -1,4 +1,4 @@
-package com.gmail.yalovikdima.itacademy.dz6;
+package com.gmail.yalovikdima.itacademy.dz6.entity;
 
 public class Offer {
 

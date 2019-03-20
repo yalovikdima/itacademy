@@ -11,7 +11,7 @@ import com.gmail.yalovikdima.itacademy.dz2.Dz2Activity;
 import com.gmail.yalovikdima.itacademy.dz3.Dz3Activity;
 import com.gmail.yalovikdima.itacademy.dz4.Dz4Activity;
 import com.gmail.yalovikdima.itacademy.dz5.Dz5Activity;
-import com.gmail.yalovikdima.itacademy.dz6.Dz6Activity;
+import com.gmail.yalovikdima.itacademy.dz6.activity.Dz6Activity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

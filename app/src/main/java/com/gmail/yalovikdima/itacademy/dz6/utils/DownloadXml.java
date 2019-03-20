@@ -1,6 +1,9 @@
-package com.gmail.yalovikdima.itacademy.dz6;
+package com.gmail.yalovikdima.itacademy.dz6.utils;
 
 import android.os.AsyncTask;
+
+import com.gmail.yalovikdima.itacademy.dz6.entity.Offer;
+import com.gmail.yalovikdima.itacademy.dz6.entity.OffersSingleton;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -16,6 +19,11 @@ public class DownloadXml extends AsyncTask<String, Void, ArrayList<Offer>> {
     private OffersSingleton singleton = OffersSingleton.getInstance();
 
     private final String URL = "https://pochemuchka.by/market.xml";
+
+    private final String OFFER = "offer";
+    private final String ID = "id";
+    private final String NAME = "name";
+    private final String PICTURE = "picture";
 
     @Override
     protected ArrayList<Offer> doInBackground(String... strings) {
@@ -37,7 +45,7 @@ public class DownloadXml extends AsyncTask<String, Void, ArrayList<Offer>> {
         delegate.processFinish(singleton.getOffers());
     }
 
-    public InputStream getInputStream(URL url) {
+    private InputStream getInputStream(URL url) {
         try {
             return url.openConnection().getInputStream();
         } catch (IOException e) {
@@ -45,7 +53,7 @@ public class DownloadXml extends AsyncTask<String, Void, ArrayList<Offer>> {
         }
     }
 
-    public boolean parse(XmlPullParser xpp) {
+    private boolean parse(XmlPullParser xpp) {
         boolean status = true;
         Offer currentOffer = null;
         boolean inEntry = false;
@@ -58,7 +66,7 @@ public class DownloadXml extends AsyncTask<String, Void, ArrayList<Offer>> {
                 String tagName = xpp.getName();
                 switch (eventType) {
                     case XmlPullParser.START_TAG:
-                        if ("offer".equalsIgnoreCase(tagName)) {
+                        if (OFFER.equalsIgnoreCase(tagName)) {
                             inEntry = true;
                             currentOffer = new Offer(xpp.getAttributeValue(null, "id"));
                         }
@@ -69,16 +77,14 @@ public class DownloadXml extends AsyncTask<String, Void, ArrayList<Offer>> {
 
                     case XmlPullParser.END_TAG:
                         if (inEntry) {
-                            if ("offer".equalsIgnoreCase(tagName)) {
+                            if (OFFER.equalsIgnoreCase(tagName)) {
                                 singleton.addOffer(currentOffer);
                                 inEntry = false;
-                            } else if ("id".equalsIgnoreCase(tagName)) {
+                            } else if (ID.equalsIgnoreCase(tagName)) {
                                 currentOffer.setId(textValue);
-                            } else if ("name".equalsIgnoreCase(tagName)) {
+                            } else if (NAME.equalsIgnoreCase(tagName)) {
                                 currentOffer.setName(textValue);
-                            } else if ("price".equalsIgnoreCase(tagName)) {
-                                currentOffer.setPrice(textValue);
-                            } else if ("picture".equalsIgnoreCase(tagName)) {
+                            }  else if (PICTURE.equalsIgnoreCase(tagName)) {
                                 currentOffer.setPicture(textValue);
                             }
                         }

@@ -1,10 +1,9 @@
-package com.gmail.yalovikdima.itacademy.dz6;
+package com.gmail.yalovikdima.itacademy.dz6.entity;
 
 import java.util.ArrayList;
 
 public class OffersSingleton {
     private ArrayList<Offer> offers = new ArrayList<>();
-    private DownloadXml downloadXml;
 
     private static final OffersSingleton instance = new OffersSingleton();
 
@@ -16,15 +15,11 @@ public class OffersSingleton {
         return offers;
     }
 
-    public void setOffers(ArrayList<Offer> offers) {
-        this.offers = offers;
-    }
-
     public void addOffer(Offer offer) {
-        offers.add(0,offer);
+        offers.add(0, offer);
     }
 
-    public void remove(Offer offer) {
+    public void removeOffer(Offer offer) {
         offers.remove(offer);
     }
 
@@ -35,6 +30,16 @@ public class OffersSingleton {
     public void update(Offer newOffer, Offer oldOffer) {
         int i = offers.indexOf(oldOffer);
         offers.remove(oldOffer);
-        offers.add(i,newOffer);
+        offers.add(i, newOffer);
+    }
+
+    public Offer getOfferById(String id) {
+        for (Offer offer : offers) {
+            if (offer.getId().equals(id)) {
+                return offer;
+            }
+        }
+        return null;
     }
 }
+
