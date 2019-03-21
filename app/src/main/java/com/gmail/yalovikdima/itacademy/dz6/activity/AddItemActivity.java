@@ -13,16 +13,18 @@ import com.gmail.yalovikdima.itacademy.R;
 import com.gmail.yalovikdima.itacademy.dz6.utils.ImageLoaderUtill;
 import com.gmail.yalovikdima.itacademy.dz6.entity.Offer;
 import com.gmail.yalovikdima.itacademy.dz6.entity.OffersSingleton;
+import com.gmail.yalovikdima.itacademy.dz6.utils.IntentFinal;
 
 import java.util.Random;
 
 public class AddItemActivity extends Activity implements View.OnClickListener {
 
     private EditText name;
-    private OffersSingleton singleton = OffersSingleton.getInstance();
-    private final Random random = new Random();
+    private OffersSingleton singleton;
+    private Random random;
     private final String Url = "https://picsum.photos/300/300/?random";
     private ImageView avatar;
+    private Intent resultIntent;
 
     public static Intent getIntent(Context context) {
         return new Intent( context, AddItemActivity.class);
@@ -37,13 +39,22 @@ public class AddItemActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.addButton).setOnClickListener(this);
         avatar = findViewById(R.id.avatarCreate);
         ImageLoaderUtill.loadImage(avatar, Url);
+
+        resultIntent = new Intent();
+        resultIntent.putExtra(IntentFinal.RESULT, IntentFinal.NOT_CHANGE);
+        setResult(RESULT_OK, resultIntent);
     }
 
     @Override
     public void onClick(View v) {
+        singleton = OffersSingleton.getInstance();
+        random = new Random();
         Offer offer =new Offer(String.valueOf(random.nextInt()), name.getText().toString());
         offer.setPicture(Url);
         singleton.addOffer(offer);
+
+        resultIntent.putExtra(IntentFinal.RESULT, IntentFinal.UPDATE);
+        setResult(RESULT_OK, resultIntent);
         finish();
     }
 }

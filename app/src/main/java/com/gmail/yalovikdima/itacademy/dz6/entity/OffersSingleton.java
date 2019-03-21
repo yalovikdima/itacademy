@@ -27,10 +27,11 @@ public class OffersSingleton {
         return offers.get(position);
     }
 
-    public void update(Offer newOffer, Offer oldOffer) {
+    public Offer update(Offer newOffer, Offer oldOffer) {
         int i = offers.indexOf(oldOffer);
         offers.remove(oldOffer);
         offers.add(i, newOffer);
+        return newOffer;
     }
 
     public Offer getOfferById(String id) {

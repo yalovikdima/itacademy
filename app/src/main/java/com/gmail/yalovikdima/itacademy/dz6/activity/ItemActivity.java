@@ -16,6 +16,7 @@ import com.gmail.yalovikdima.itacademy.R;
 import com.gmail.yalovikdima.itacademy.dz6.utils.ImageLoaderUtill;
 import com.gmail.yalovikdima.itacademy.dz6.entity.Offer;
 import com.gmail.yalovikdima.itacademy.dz6.entity.OffersSingleton;
+import com.gmail.yalovikdima.itacademy.dz6.utils.IntentFinal;
 
 public class ItemActivity extends Activity implements View.OnClickListener {
     private Button editButton;
@@ -24,17 +25,10 @@ public class ItemActivity extends Activity implements View.OnClickListener {
     private TextView nameItem;
     private ImageView avatar;
     private EditText nameEdit;
-    private Intent intent;
     private String idOffer;
-    private OffersSingleton offersSingleton = OffersSingleton.getInstance();
     private Offer offer;
+    private OffersSingleton offersSingleton;
     private Intent resultIntent;
-
-    private final String POS = "POS";
-    private final String RESULT = "RESULT";
-    private final String UPDATE = "UPDATE";
-    private final String DELETE = "DELETE";
-    private final String NOT_CHANGE = "NOT_CHANGE";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,16 +50,17 @@ public class ItemActivity extends Activity implements View.OnClickListener {
         saveButton.setOnClickListener(this);
 
         resultIntent = new Intent();
-        resultIntent.putExtra(RESULT, NOT_CHANGE);
+        resultIntent.putExtra(IntentFinal.RESULT, IntentFinal.NOT_CHANGE);
         setResult(RESULT_OK, resultIntent);
     }
 
     @Override
     protected void onResume() {
+        Intent intent = getIntent();
         super.onResume();
-        intent = getIntent();
-        idOffer = intent.getStringExtra(POS);
+        idOffer = intent.getStringExtra(IntentFinal.POS);
 
+        offersSingleton = OffersSingleton.getInstance();
         offer = offersSingleton.getOfferById(idOffer);
         if (offer != null) {
             nameItem.setText(offer.getName());
@@ -108,7 +103,7 @@ public class ItemActivity extends Activity implements View.OnClickListener {
         nameEdit.setText(nameItem.getText().toString());
         saveButton.setVisibility(View.VISIBLE);
 
-        resultIntent.putExtra(RESULT, UPDATE);
+        resultIntent.putExtra(IntentFinal.RESULT, IntentFinal.UPDATE);
         setResult(RESULT_OK, resultIntent);
     }
 
@@ -116,7 +111,7 @@ public class ItemActivity extends Activity implements View.OnClickListener {
         offersSingleton.removeOffer(offer);
         Toast.makeText(this, offer.getName() + " was deleted", Toast.LENGTH_SHORT).show();
 
-        resultIntent.putExtra(RESULT, DELETE);
+        resultIntent.putExtra(IntentFinal.RESULT, IntentFinal.DELETE);
         setResult(RESULT_OK, resultIntent);
         finish();
     }
@@ -124,7 +119,7 @@ public class ItemActivity extends Activity implements View.OnClickListener {
     private void saveClick() {
         Offer newOffer = new Offer(offer.getId(), nameEdit.getText().toString());
         newOffer.setPicture(offer.getPicture());
-        offersSingleton.update(newOffer, offer);
+        offer = offersSingleton.update(newOffer, offer);
         nameItem.setVisibility(View.VISIBLE);
         nameItem.setText(newOffer.getName());
         editButton.setVisibility(View.VISIBLE);

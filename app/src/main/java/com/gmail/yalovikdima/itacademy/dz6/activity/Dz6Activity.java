@@ -19,6 +19,7 @@ import com.gmail.yalovikdima.itacademy.dz6.utils.DownloadXml;
 import com.gmail.yalovikdima.itacademy.dz6.adapter.MyListAdapter;
 import com.gmail.yalovikdima.itacademy.dz6.entity.Offer;
 import com.gmail.yalovikdima.itacademy.dz6.entity.OffersSingleton;
+import com.gmail.yalovikdima.itacademy.dz6.utils.IntentFinal;
 
 import java.util.ArrayList;
 
@@ -32,10 +33,6 @@ public class Dz6Activity extends Activity implements AsyncResponce, View.OnClick
     private EditText editText;
     private int pos;
     private String textSearch;
-
-    private final String RESULT = "RESULT";
-    private final String DELETE = "DELETE";
-    private final String POS = "POS";
 
 
     public static Intent getIntent(Context context) {
@@ -98,8 +95,7 @@ public class Dz6Activity extends Activity implements AsyncResponce, View.OnClick
 
     @Override
     public void onClick(View v) {
-        startActivity(AddItemActivity.getIntent(this));
-        adapter.notifyItemInserted(0);
+        startActivityForResult(AddItemActivity.getIntent(this), 1);
     }
 
     private void updateActivity() {
@@ -108,7 +104,7 @@ public class Dz6Activity extends Activity implements AsyncResponce, View.OnClick
             @Override
             public void onClick(final Offer offer, int position) {
                 pos = position;
-                intent.putExtra(POS, offer.getId());
+                intent.putExtra(IntentFinal.POS, offer.getId());
                 startActivityForResult(intent, 1);
             }
         });
@@ -117,12 +113,14 @@ public class Dz6Activity extends Activity implements AsyncResponce, View.OnClick
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        String result = data.getStringExtra(RESULT);
+        String result = data.getStringExtra(IntentFinal.RESULT);
         if(result != null) {
-            if (result.equals(DELETE)) {
+            if (result.equals(IntentFinal.DELETE)) {
                 adapter.notifyItemRemoved(pos);
-            } else {
+            } else if(result.equals(IntentFinal.UPDATE)) {
                 adapter.notifyItemChanged(pos);
+            }else if(result.equals(IntentFinal.INSERT)){
+                adapter.notifyItemInserted(0);
             }
             if(textSearch!=null) {
                 filter(textSearch);
