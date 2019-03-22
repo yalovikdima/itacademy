@@ -11,6 +11,7 @@ import com.gmail.yalovikdima.itacademy.dz2.Dz2Activity;
 import com.gmail.yalovikdima.itacademy.dz3.Dz3Activity;
 import com.gmail.yalovikdima.itacademy.dz4.Dz4Activity;
 import com.gmail.yalovikdima.itacademy.dz5.Dz5Activity;
+import com.gmail.yalovikdima.itacademy.dz6.activity.Dz6Activity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.dz3Button).setOnClickListener(this);
         findViewById(R.id.dz4Button).setOnClickListener(this);
         findViewById(R.id.dz5Button).setOnClickListener(this);
+        findViewById(R.id.dz6Button).setOnClickListener(this);
         findViewById(R.id.loginPageButton).setOnClickListener(this);
     }
 
@@ -52,6 +54,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             case R.id.dz5Button: {
                 startActivity(Dz5Activity.getIntent(this));
+                break;
+            }
+            case R.id.dz6Button: {
+                startActivity(Dz6Activity.getIntent(this));
                 break;
             }
             case R.id.loginPageButton: {
