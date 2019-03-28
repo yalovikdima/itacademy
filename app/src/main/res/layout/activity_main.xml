@@ -13,6 +13,21 @@
         android:layout_height="match_parent"
         android:paddingBottom="20dp">
 
+        <Button
+            android:id="@+id/dz9Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/color_button"
+            android:text="@string/dz9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.195"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dz5Button"
+            tools:ignore="MissingConstraints" />
+
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -31,13 +46,10 @@
             android:id="@+id/dz1Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="196dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="204dp"
             android:background="@color/color_button"
             android:text="@string/dz1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.195"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
@@ -61,13 +73,13 @@
             android:id="@+id/dz3Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="68dp"
             android:layout_marginTop="28dp"
             android:layout_marginEnd="8dp"
             android:background="@color/color_button"
             android:text="@string/dz3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.195"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dz1Button"
             tools:ignore="MissingConstraints" />
@@ -83,8 +95,8 @@
             android:background="@color/color_button"
             android:text="@string/dz4"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.853"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.701"
+            app:layout_constraintStart_toEndOf="@+id/dz3Button"
             app:layout_constraintTop_toBottomOf="@+id/dz2Button"
             tools:ignore="MissingConstraints" />
 
@@ -113,8 +125,8 @@
             android:background="@color/color_button"
             android:text="@string/dz6"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.853"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.701"
+            app:layout_constraintStart_toEndOf="@+id/dz5Button"
             app:layout_constraintTop_toBottomOf="@+id/dz4Button"
             tools:ignore="MissingConstraints" />
 
@@ -123,14 +135,14 @@
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="52dp"
             android:layout_marginEnd="8dp"
             android:background="@color/green_Flag"
             android:text="Login"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.566"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dz5Button"
+            app:layout_constraintHorizontal_bias="0.701"
+            app:layout_constraintStart_toEndOf="@+id/dz9Button"
+            app:layout_constraintTop_toBottomOf="@+id/dz6Button"
             tools:ignore="MissingConstraints" />
 
 
