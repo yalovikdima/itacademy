@@ -1,24 +1,18 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
     <fragment
-        class="com.gmail.yalovikdima.itacademy.dz9.screen.ListFragment"
-        android:id="@+id/listFragment"
-        android:layout_width="0px"
-        android:layout_height="match_parent"
+        class="com.gmail.yalovikdima.itacademy.dz9.screen.OfferListFragment"
+        android:id="@+id/offers"
         android:layout_weight="1"
-        />
+        android:layout_width="0px"
+        android:layout_height="match_parent" />
 
     <FrameLayout
-        android:id="@+id/itemFragment"
-        android:layout_width="0px"
-        android:layout_height="match_parent"
+        android:id="@+id/details"
         android:layout_weight="1"
-        android:background="@color/color_button"/>
+        android:layout_width="0px"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

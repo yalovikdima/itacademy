@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }
             case R.id.dz9Button:{
-                startActivity(Dz9Activity.getInstance(this));
+                startActivity(Dz9Activity.getIntent(this));
             }
 
         }

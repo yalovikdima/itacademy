@@ -34,7 +34,11 @@
         <activity android:name=".cw.LoginActivity"/>
         <activity android:name=".dz6.activity.AddItemActivity"/>
         <activity android:name=".dz6.activity.ItemActivity"/>
-        <activity android:name=".dz9.screen.Dz9Activity"/>
+
+        <activity android:name=".dz9.screen.Dz9Activity"
+            android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".dz9.screen.SecondActivity"/>
 
         <service android:name=".dz5.WifiService"/>
 
