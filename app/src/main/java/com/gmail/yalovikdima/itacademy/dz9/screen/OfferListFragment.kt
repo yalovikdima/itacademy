@@ -27,10 +27,7 @@ class OfferListFragment : Fragment(), AsyncResponce, View.OnClickListener {
     private val offersSingleton: OffersSingleton = OffersSingleton.getInstance()
     private var pos: Int = 0
     private var adapter = OfferAdapter(offersSingleton.offers)
-    private val ID = "id"
-    private val POSITION ="position"
-    private val FRAGMENT = "fragment"
-    private val ADD = "add"
+
 
 
     companion object {

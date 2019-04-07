@@ -20,6 +20,7 @@ class DetailsFragment : Fragment(), View.OnClickListener {
     private var offersSingleton: OffersSingleton? = null
     private var position: Int = 0
     private var offerListFragment: OfferListFragment? = null
+    private lateinit var idOffer: String
 
     companion object {
         fun getInstance(args: Bundle?): DetailsFragment {
@@ -27,6 +28,12 @@ class DetailsFragment : Fragment(), View.OnClickListener {
             detailsFragment.arguments = args
             return detailsFragment
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        idOffer = arguments?.get(ID) as String
+        position = arguments?.get(POSITION) as Int
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -59,9 +66,6 @@ class DetailsFragment : Fragment(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        val idOffer = arguments?.get("id") as String
-        position = arguments?.get("position") as Int
-
         offersSingleton = OffersSingleton.getInstance()
         offer = offersSingleton?.getOfferById(idOffer)
         if (offer != null) {
