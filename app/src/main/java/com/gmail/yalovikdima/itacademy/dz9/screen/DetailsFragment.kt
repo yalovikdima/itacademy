@@ -38,8 +38,6 @@ class DetailsFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        if (fragmentManager?.findFragmentById(R.id.offers) != null)
-            offerListFragment = fragmentManager?.findFragmentById(R.id.offers) as OfferListFragment
         return inflater.inflate(R.layout.activity_item, container, false)
     }
 
@@ -95,7 +93,7 @@ class DetailsFragment : Fragment(), View.OnClickListener {
         Toast.makeText(context, offer?.name + " was deleted", Toast.LENGTH_SHORT).show()
         activity?.recyclerView?.adapter?.notifyItemRemoved(position)
         fragmentManager?.beginTransaction()?.remove(this)?.commit()
-        offerListFragment?.update()
+        (activity as OffersUpdate).update()
         if (activity is SecondActivity) {
             activity?.finish()
         }
@@ -107,7 +105,7 @@ class DetailsFragment : Fragment(), View.OnClickListener {
         offer = offersSingleton?.update(newOffer, offer)
         activity?.recyclerView?.adapter?.notifyItemChanged(position)
         fragmentManager?.beginTransaction()?.remove(this)?.commit()
-        offerListFragment?.update()
+        (activity as OffersUpdate).update()
         if (activity is SecondActivity) {
             activity?.finish()
         }
