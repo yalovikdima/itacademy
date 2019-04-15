@@ -42,6 +42,7 @@ public class MyListViewHolder extends RecyclerView.ViewHolder implements View.On
 
     @Override
     public void onClick(View v) {
+
         this.itemClickListener.onItemClick(v,getLayoutPosition());
     }
 }

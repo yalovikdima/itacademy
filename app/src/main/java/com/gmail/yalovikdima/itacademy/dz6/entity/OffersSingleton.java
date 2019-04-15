@@ -23,10 +23,6 @@ public class OffersSingleton {
         offers.remove(offer);
     }
 
-    public Offer getOffer(int position) {
-        return offers.get(position);
-    }
-
     public Offer update(Offer newOffer, Offer oldOffer) {
         int i = offers.indexOf(oldOffer);
         offers.remove(oldOffer);

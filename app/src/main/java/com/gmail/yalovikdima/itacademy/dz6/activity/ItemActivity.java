@@ -52,7 +52,7 @@ public class ItemActivity extends Activity implements View.OnClickListener {
         resultIntent = new Intent();
         resultIntent.putExtra(IntentFinal.RESULT, IntentFinal.NOT_CHANGE);
         setResult(RESULT_OK, resultIntent);
-    }
+}
 
     @Override
     protected void onResume() {
